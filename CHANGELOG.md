@@ -4,6 +4,32 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v2.0 · 2026-05-21
+
+**Rearmado total de arquitectura web pública.**
+
+### Estructura nueva (web pública pre-login)
+- **Inicio (home) = Academia** (LMS). Es lo primero que ve un visitante
+- **Topbar público nuevo**: Logo · Academia · Precios · Nosotros · Contacto · [Iniciar sesión]
+- **Pill superior "MODO DEMO"** negro con dot azul pulsando. Atajos para que el socio pueda saltar a Wizard / App sin loguearse
+- **Footer público** con 4 columnas (Producto / Empresa / Legal / Branding) en todas las páginas públicas
+- **Modal Iniciar sesión** centrado, premium, email/password ficticio → entra al wizard/app
+
+### Vistas nuevas
+- **Vista Precios** (`#view-precios`): hero + toggle Mensual/Anual con badge "−16%" + 3 cards (Gratis $0, Pro $2,900 destacado en azul, Platinum $3,700 con tarjeta oscura premium + medalla "★ MEJOR OPCIÓN" dorada) + FAQ con 4 preguntas
+- **Vista Nosotros** (`#view-nosotros`): hero + 4 stats (3,400 clínicas, 7 países, 280k pacientes, 99.98% uptime) + 3 bloques (Misión / Visión / Valores) + Equipo (3 miembros con avatar, nombre, rol, bio)
+- **Vista Contacto** (`#view-contacto`): hero + formulario (nombre, clínica, email, WhatsApp, # doctores, mensaje) + sidebar con 4 cards (WhatsApp, Email, Oficina, Horarios)
+
+### Wizard de clínica · 7 pasos (era 8)
+- **Eliminado** el viejo paso 2 "Plan SaaS" porque el usuario ya pagó antes del wizard
+- Pasos actuales: 1. Tu clínica · 2. Sucursales · 3. Equipo · 4. Sillones · 5. Servicios y precios · 6. Métodos de pago · 7. ¡Listo!
+- Sidebar wizard renumerado · WIZ_HERO renumerado · wizActions actualizado a "de 7"
+
+### Pendiente para v2.1 (anotado en memoria, no hecho aún)
+- **Wizard de doctor productor LMS**: subir curso, configurar payouts Stripe Connect, enviar a aprobación de calidad. Si cumple → publicado. Si no → rebotado con motivo.
+
+---
+
 ## v1.5 · 2026-05-21
 
 **Fix layout wizard plan activo + nombre plan.**
