@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Cenident demo · acceso privado · no indexar
