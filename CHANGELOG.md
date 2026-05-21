@@ -4,6 +4,33 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v1.2 · 2026-05-21
+
+**Rediseño Academia + Home estilo Netflix premium.**
+
+### Academia (LMS)
+- **Hero**: ya no es un "trailer" con play. Ahora es un **banner publicitario tipo poster Netflix** con imagen de fondo real (Unsplash), etiqueta "Patrocinado por marca" (ej. 3M ESPE), título grande estilo cinematográfico, meta info en una línea horizontal y dos CTAs ("Ver tráiler" + "Más información") al estilo Netflix originals. La label "ANUNCIO DESTACADO · EDITABLE" arriba a la derecha deja claro que es un espacio publicitario editable
+- **Stats bar** ahora va flotando bajo el hero (no embebido dentro)
+- **Carruseles full-bleed**: van de borde a borde de la pantalla (no contenidos en una caja). Eliminado el `mask-image` con degradado en los costados que se veía cortado y barato
+- **Thumbnails de cursos**: ya no son gradients morados planos. Ahora son **fotos reales dentales/clínicas (Unsplash)** distintas por curso, con el título overlay en blanco sobre la imagen (estilo Netflix card)
+- Tag "BESTSELLER" cambió a rojo Netflix (`#e50914`) para más contraste
+- Cards más limpias: sin línea de título debajo, el título está sobre la foto
+
+### Home
+- **Hero rediseñado tipo Netflix**: imagen de fondo de impacto + degradado lateral oscuro + texto a la izquierda (ya no centrado)
+- Eyebrow ahora con backdrop-blur sobre la imagen
+- Stats con glassmorphism sobre la imagen
+- Cards de Inicio (Wizard / App / LMS) ahora con **imágenes Unsplash de fondo** + gradient azul/morado por categoría + icono glass flotante abajo-derecha
+
+### Curvas / border-radius
+- Reducido el border-radius global de cards, modales, botones (era 14-18px → ahora 8-10px). Se veía "infantil/redondeado" como observado. Ahora más cuadrado tipo Apple/Linear
+- Botones: 9px → 6px
+- Cards: 14px → 10px
+- Modales: 16px → 10px
+- Cat-chips: 999px → 6px
+
+---
+
 ## v1.1 · 2026-05-21
 
 **Pulido de detalles del wizard.**
