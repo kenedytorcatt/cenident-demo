@@ -4,6 +4,30 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v1.4 · 2026-05-21
+
+**Pulido + lógica de wizard corregida.**
+
+### Quitado
+- **Buscador ⌘K del topbar global**: distraía sin aportar valor en esta versión del demo. (El atajo Ctrl+K sigue funcionando si alguien lo usa, pero el botón visible se eliminó)
+
+### Wizard step 2 · rediseñado con lógica real de negocio
+- **Antes**: pedía elegir entre Free / Pro / Platinum con precios (incorrecto: el usuario ya pagó antes de entrar al wizard)
+- **Ahora**: muestra "Tu plan está activo" + card grande con borde azul + badge "ACTIVO" verde arriba derecha + nombre del plan + precio + próximo cobro + lista de features con check verde + botones "Cambiar de plan" y "Descargar factura"
+- Se eliminó el toggle Mensual/Anual del wizard (también pertenece a la página de precios pre-pago)
+
+### Nombres y precios actualizados (para landing page futura, no wizard)
+- Free → **Gratis**
+- Pro → **Más vendido** · $2,900/mes
+- Platinum → **Mejor opción** · $3,700/mes
+- Quitado el badge "MÁS POPULAR" del medio (la jerarquía ahora la marca el nombre)
+
+### Cache-bust agresivo
+- URL del demo ahora incluye `?b=v13-<timestamp>` para esquivar el cache CDN de Fastly de GitHub Pages
+- Headers no-cache en meta tags
+
+---
+
 ## v1.3 · 2026-05-21
 
 **Hero LMS rediseñado completo + sin ratings + banda de marcas.**

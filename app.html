@@ -418,6 +418,75 @@
   }
   .tier.selected .tier-icon { background: var(--bg-2); }
 
+  /* ===== Plan activo (wizard step 2) ===== */
+  .plan-active {
+    position: relative;
+    background: var(--bg-2);
+    border: 2px solid var(--brand);
+    border-radius: 12px;
+    padding: 26px 28px 22px;
+    box-shadow: 0 20px 50px -20px rgba(59,108,255,.35), 0 0 0 4px var(--brand-soft);
+    overflow: hidden;
+  }
+  .plan-active-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(600px 250px at 50% -20%, var(--brand-soft), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .plan-active > *:not(.plan-active-glow) { position: relative; z-index: 1; }
+  .plan-active-badge {
+    position: absolute; top: 18px; right: 22px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--pos); color: #fff;
+    padding: 5px 11px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: .12em;
+    box-shadow: 0 6px 14px -4px var(--pos);
+    z-index: 2;
+  }
+  .plan-active-h {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; margin-bottom: 20px;
+    padding-right: 80px;
+  }
+  .plan-active-eyebrow {
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600; margin-bottom: 8px;
+  }
+  .plan-active-name {
+    font-size: 30px; font-weight: 700; letter-spacing: -.025em; line-height: 1;
+    color: var(--text);
+  }
+  .plan-active-price { text-align: right; }
+  .plan-active-price .amt {
+    font-family:'Geist Mono', monospace;
+    font-size: 30px; font-weight: 700; letter-spacing: -.02em;
+    color: var(--brand-hi); line-height: 1;
+  }
+  .plan-active-price .amt small {
+    font-size: 13px; color: var(--text-3); font-weight: 400; font-family: 'Geist', sans-serif;
+  }
+  .plan-active-price .next {
+    font-size: 11.5px; color: var(--text-3); margin-top: 8px; font-family:'Geist Mono', monospace;
+  }
+  .plan-active-divider {
+    height: 1px; background: var(--line);
+    margin: 4px 0 20px;
+  }
+  .plan-active-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
+    margin-bottom: 22px;
+  }
+  .paf {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 13.5px; color: var(--text-2);
+  }
+  .paf svg { color: var(--pos); flex-shrink: 0; }
+  .plan-active-actions {
+    display: flex; gap: 10px;
+    padding-top: 18px; border-top: 1px solid var(--line);
+  }
+
   .wiz-done-hero {
     position: relative; text-align: center; padding: 40px 24px 32px;
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px;
@@ -896,11 +965,6 @@
     </nav>
 
     <div style="flex:1"></div>
-
-    <button class="search-trigger" onclick="openCmdk()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
-      <span class="kbd">⌘ K</span>
-    </button>
 
     <div style="position: relative">
       <button class="country-trigger" onclick="toggleCountryMenu(event)">
@@ -1973,20 +2037,43 @@
     2: () => `
       ${wizHeroVisual(2)}
       <div class="wiz-page-h">
-        <div class="wiz-page-eyebrow">Paso 2 de 8 · plan SaaS</div>
-        <h1 class="wiz-page-title">Elige tu plan</h1>
-        <p class="wiz-page-sub">Puedes cambiar de plan cuando quieras. El primer mes es gratis en cualquiera.</p>
+        <div class="wiz-page-eyebrow">Paso 2 de 8 · tu plan</div>
+        <h1 class="wiz-page-title">Tu plan está activo</h1>
+        <p class="wiz-page-sub">Este es el plan que contrataste. Puedes cambiarlo en cualquier momento desde Ajustes → Facturación.</p>
       </div>
-      <div class="billing-toggle">
-        <button class="bt-opt active" onclick="wizBilling(this, 'm')">Mensual</button>
-        <button class="bt-opt" onclick="wizBilling(this, 'y')">Anual <span class="bt-save">−16%</span></button>
+      <div class="plan-active">
+        <div class="plan-active-glow"></div>
+        <div class="plan-active-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> ACTIVO</div>
+        <div class="plan-active-h">
+          <div>
+            <div class="plan-active-eyebrow">PLAN CONTRATADO</div>
+            <div class="plan-active-name">Más vendido</div>
+          </div>
+          <div class="plan-active-price">
+            <div class="amt">$2,900<small> / mes</small></div>
+            <div class="next">Próximo cobro: 21 jun 2026</div>
+          </div>
+        </div>
+        <div class="plan-active-divider"></div>
+        <div class="plan-active-features">
+          <div class="paf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Hasta 5 doctores</div>
+          <div class="paf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Pacientes ilimitados</div>
+          <div class="paf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Cobros Stripe split</div>
+          <div class="paf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Odontograma + 3D</div>
+          <div class="paf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>WhatsApp integrado</div>
+          <div class="paf"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Multi-moneda</div>
+        </div>
+        <div class="plan-active-actions">
+          <button class="btn-ghost" onclick="toast('Vista de planes · disponible en Ajustes')">Cambiar de plan</button>
+          <button class="btn-ghost" onclick="toast('Factura descargada')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline; vertical-align:-2px; margin-right:6px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Descargar factura</button>
+        </div>
       </div>
-      <div class="tiers">
+      <div class="tiers" style="display:none">
         <div class="tier ${WIZ_TIER === 'free' ? 'selected' : ''}" onclick="wizTier('free')">
           <div class="tier-glow"></div>
           <div class="tier-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="tier-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/></svg></div>
-          <div class="tier-name">Free</div>
+          <div class="tier-name">Gratis</div>
           <div class="tier-price">$0<small> / mes</small></div>
           <ul class="tier-list">
             <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>1 doctor · 1 sillón</li>
@@ -1995,13 +2082,12 @@
             <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Sin cobros online</li>
           </ul>
         </div>
-        <div class="tier popular ${WIZ_TIER === 'pro' ? 'selected' : ''}" onclick="wizTier('pro')">
+        <div class="tier ${WIZ_TIER === 'pro' ? 'selected' : ''}" onclick="wizTier('pro')">
           <div class="tier-glow"></div>
-          <div class="tier-popular-badge">MÁS POPULAR</div>
           <div class="tier-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="tier-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></div>
-          <div class="tier-name">Pro</div>
-          <div class="tier-price">$890<small> / mes</small></div>
+          <div class="tier-name">Más vendido</div>
+          <div class="tier-price">$2,900<small> / mes</small></div>
           <ul class="tier-list">
             <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Hasta 5 doctores</li>
             <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Pacientes ilimitados</li>
@@ -2014,8 +2100,8 @@
           <div class="tier-glow"></div>
           <div class="tier-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="tier-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-          <div class="tier-name">Platinum</div>
-          <div class="tier-price">$2,490<small> / mes</small></div>
+          <div class="tier-name">Mejor opción</div>
+          <div class="tier-price">$3,700<small> / mes</small></div>
           <ul class="tier-list">
             <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Doctores ilimitados</li>
             <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Multi-sucursal</li>
