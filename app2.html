@@ -665,9 +665,9 @@
   .col-rechazado .ico { background: var(--bg-3); color: var(--text-3); }
   .kan-col-h .cnt { font-family:'Geist Mono', monospace; font-size: 10.5px; color: var(--text-3); background: var(--bg-2); border: 1px solid var(--line); padding: 1px 6px; border-radius: 5px; }
   .kan-list { flex: 1; display: flex; flex-direction: column; gap: 8px; min-height: 100px; }
-  .kan-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; cursor: grab; transition: box-shadow .15s, transform .15s; user-select: none; }
-  .kan-card:hover { box-shadow: var(--shadow); }
-  .kan-card:active { cursor: grabbing; }
+  .kan-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; cursor: grab; transition: box-shadow .15s, transform .15s, border-color .15s; user-select: none; }
+  .kan-card:hover { box-shadow: var(--shadow); border-color: var(--brand-line); transform: translateY(-1px); }
+  .kan-card:active { cursor: grabbing; border-color: var(--brand); }
   .kan-ghost { opacity: .4; }
   .kan-chosen { box-shadow: var(--brand-glow); border-color: var(--brand); }
   .kan-drag { transform: rotate(2deg); }
@@ -1392,19 +1392,19 @@
     <aside class="app-side">
       <div class="nav-section">
         <div class="nav-label">Hoy</div>
-        <div class="nav-item active">
+        <div class="nav-item active" onclick="sideNav(this, 'Agenda · 14 citas hoy')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           Agenda <span class="count mono">14</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="sideNav(this, 'Pacientes · 1,234 registrados')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><rect x="3" y="4" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/></svg>
           Pacientes <span class="count mono">1.2k</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="sideNav(this, 'Planes activos · 38 en curso')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Planes activos <span class="count mono">38</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="sideNav(this, 'Cobros · 7 pendientes')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           Cobros <span class="count mono">7</span>
         </div>
@@ -1412,19 +1412,19 @@
 
       <div class="nav-section">
         <div class="nav-label">Gestión</div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="sideNav(this, 'Reportes · ROI, KPIs, conversión')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
           Reportes
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="sideNav(this, 'ERP · inventario + facturación CFDI')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           ERP / Inventario
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="goView('lms')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           Academia
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="sideNav(this, 'Ajustes · perfil, sucursales, equipo, facturación')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/><circle cx="12" cy="12" r="3"/></svg>
           Ajustes
         </div>
@@ -2333,23 +2333,35 @@
     toast(`Pieza ${n} seleccionada`);
   }
 
+  // ============ SIDEBAR APP nav ============
+  function sideNav(el, msg) {
+    el.parentElement.parentElement.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    toast(msg);
+  }
+
   // ============ TIMELINE STEPS ============
+  // Mapa de cada paso a la sección que debe destacar/scrollear
+  const TL_TARGETS = {
+    3: '.step-card:has(.step-num.done)', // Exploración · odontograma
+    4: '.kanban', // Plan tratamiento · kanban
+  };
   function tlGo(n, msg) {
     toast(msg);
-    // Visual: setear current al paso clickeado (excepto si locked)
     const steps = document.querySelectorAll('.tl-step');
     if (steps[n-1].classList.contains('locked')) return;
+    // Cambiar current visual
     steps.forEach((s, i) => {
       s.classList.remove('current');
       if (i + 1 === n) s.classList.add('current');
     });
-    // Actualizar barra de progreso
+    // Barra de progreso
     const prog = document.querySelector('.tl-progress');
     if (prog) {
       const pct = (n - 1) / 7;
       prog.style.width = 'calc((100% - 44px) * ' + pct + ')';
     }
-    // Cambiar número del círculo del current
+    // Refrescar números
     steps.forEach((s, i) => {
       const c = s.querySelector('.tl-circle');
       if (s.classList.contains('done')) {
@@ -2358,6 +2370,26 @@
         c.textContent = i + 1;
       }
     });
+    // Scroll a la sección correspondiente
+    let target = null;
+    if (n === 1 || n === 2) target = document.querySelector('.patient-card');
+    else if (n === 3) {
+      // Odontograma · primer step-card
+      const cards = document.querySelectorAll('.step-card');
+      target = cards[0];
+    }
+    else if (n === 4) {
+      // Plan · segundo step-card
+      const cards = document.querySelectorAll('.step-card');
+      target = cards[1];
+    }
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Highlight breve
+      target.style.transition = 'box-shadow .4s';
+      target.style.boxShadow = '0 0 0 3px var(--brand), 0 24px 60px -20px rgba(59,108,255,.4)';
+      setTimeout(() => { target.style.boxShadow = ''; }, 1600);
+    }
   }
 
   // ============ ROLES ============
