@@ -4,6 +4,17 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v1.1 · 2026-05-21
+
+**Pulido de detalles del wizard.**
+
+### Arreglado
+- **Hero gradient del wizard**: ya no se ve cortado. Texto e icono ahora están centrados verticalmente, padding consistente, gradient con más profundidad (3 capas radial + degradado base más rico)
+- **Toggle Mensual / Anual**: el badge "−16%" ya no se sale del botón. Padding ajustado, sombras más limpias, gradient azul en el botón activo
+- **Badge "POPULAR"**: ya no se ve cortado por encima de la card. Movido al centro superior del plan Pro, con sombra azul más fuerte e inner highlight, cambiado el texto a "MÁS POPULAR" para claridad. Las cards ahora tienen `overflow: visible` con un elemento separado para el glow
+
+---
+
 ## v1.0 · 2026-05-21
 
 **Primera versión navegable consolidada.**

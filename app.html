@@ -207,7 +207,7 @@
   .upload-zone { border: 2px dashed var(--line-2); border-radius: 12px; padding: 28px 20px; text-align: center; cursor: pointer; background: var(--bg-2); }
   .upload-zone:hover { border-color: var(--brand); background: var(--brand-soft); }
 
-  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding-top: 14px; overflow: visible; }
   .tier { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; padding: 20px; cursor: pointer; position: relative; transition: all .15s; }
   .tier:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--shadow); }
   .tier.selected { border-color: var(--brand); background: var(--brand-soft); box-shadow: var(--brand-glow); }
@@ -248,26 +248,42 @@
 
   /* ===== WIZARD PREMIUM ===== */
   .wiz-hero-visual {
-    position: relative; aspect-ratio: 21/6; border-radius: 18px; overflow: hidden;
+    position: relative; min-height: 140px; border-radius: 18px; overflow: hidden;
     margin-bottom: 28px;
-    background: radial-gradient(800px 300px at 20% 30%, color-mix(in oklab, var(--brand) 30%, transparent), transparent 60%),
-                radial-gradient(600px 280px at 80% 70%, color-mix(in oklab, var(--purple) 20%, transparent), transparent 60%),
-                linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-    box-shadow: 0 20px 60px -20px rgba(15,18,32,.35), 0 0 0 1px rgba(255,255,255,.03);
+    background:
+      radial-gradient(800px 400px at 15% 50%, rgba(91,111,245,.45), transparent 60%),
+      radial-gradient(600px 350px at 85% 50%, rgba(139,92,246,.35), transparent 60%),
+      linear-gradient(135deg, #0a1538 0%, #1e3a8a 50%, #2a1065 100%);
+    box-shadow: 0 20px 60px -20px rgba(15,18,32,.45), 0 0 0 1px rgba(255,255,255,.04);
   }
   .wiz-hero-visual::before {
     content:''; position:absolute; inset:0;
-    background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
     background-size: 22px 22px;
+    opacity: .8;
   }
   .wiz-hero-visual::after {
     content:''; position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.35) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,.05) 0%, transparent 40%, rgba(0,0,0,.15) 100%);
+    pointer-events: none;
   }
-  .wiz-hero-inner { position: relative; z-index:2; padding: 24px 28px; height: 100%; display: flex; align-items: flex-end; justify-content: space-between; color: #fff; }
-  .wiz-hero-step { font-family:'Geist Mono', monospace; font-size: 11px; letter-spacing:.18em; color: rgba(255,255,255,.65); font-weight: 600; margin-bottom: 6px; }
-  .wiz-hero-title { font-size: 22px; font-weight: 600; letter-spacing:-.015em; line-height: 1.2; max-width: 460px; }
-  .wiz-hero-icon { width: 84px; height: 84px; border-radius: 22px; background: rgba(255,255,255,.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.18); color: #fff; display:grid; place-items:center; box-shadow: 0 12px 30px -10px rgba(0,0,0,.4); }
+  .wiz-hero-inner {
+    position: relative; z-index:2; padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; color: #fff;
+  }
+  .wiz-hero-text { flex: 1; min-width: 0; }
+  .wiz-hero-step { font-family:'Geist Mono', monospace; font-size: 11px; letter-spacing:.18em; color: rgba(255,255,255,.72); font-weight: 600; margin-bottom: 10px; }
+  .wiz-hero-title { font-size: 24px; font-weight: 600; letter-spacing:-.02em; line-height: 1.2; max-width: 480px; color: #fff; }
+  .wiz-hero-icon {
+    width: 78px; height: 78px; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.22);
+    color: #fff; display:grid; place-items:center;
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.18);
+    flex-shrink: 0;
+  }
 
   .wiz-card {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px;
@@ -283,40 +299,50 @@
 
   .billing-toggle {
     display: inline-flex; background: var(--bg-2); border: 1px solid var(--line);
-    border-radius: 999px; padding: 4px; gap: 2px; margin-bottom: 20px;
+    border-radius: 999px; padding: 4px; gap: 2px; margin-bottom: 24px;
     box-shadow: var(--shadow-sm);
+    position: relative;
   }
   .bt-opt {
-    padding: 7px 18px; background: transparent; border: none;
+    padding: 8px 20px; background: transparent; border: none;
     border-radius: 999px; font-size: 13px; font-weight: 500;
     color: var(--text-3); cursor: pointer; font-family: inherit;
     display: inline-flex; align-items: center; gap: 8px;
+    transition: color .15s, background .15s, box-shadow .25s;
+    white-space: nowrap;
   }
   .bt-opt:hover { color: var(--text); }
-  .bt-opt.active { background: var(--brand); color: #fff; box-shadow: var(--brand-glow); }
-  .bt-save { font-family:'Geist Mono', monospace; font-size: 10.5px; background: var(--pos); color: #fff; padding: 2px 7px; border-radius: 999px; font-weight: 600; }
-  .bt-opt.active .bt-save { background: rgba(255,255,255,.22); }
+  .bt-opt.active { background: linear-gradient(180deg, var(--brand-hi), var(--brand)); color: #fff; box-shadow: 0 6px 14px -4px rgba(59,108,255,.4); }
+  .bt-save {
+    font-family:'Geist Mono', monospace; font-size: 10px;
+    background: var(--pos); color: #fff;
+    padding: 2px 7px; border-radius: 999px; font-weight: 700;
+    letter-spacing: .04em; line-height: 1;
+    display: inline-flex; align-items: center;
+  }
+  .bt-opt.active .bt-save { background: rgba(255,255,255,.25); color: #fff; }
 
   .tier {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px;
     padding: 22px 22px 20px; cursor: pointer; position: relative;
     transition: all .25s cubic-bezier(.4,0,.2,1);
-    overflow: hidden;
+    overflow: visible;
   }
-  .tier::before {
-    content:''; position:absolute; inset:0;
+  .tier-glow {
+    content:''; position:absolute; inset:0; border-radius: 16px;
     background: radial-gradient(400px 200px at 50% -20%, var(--brand-soft), transparent 60%);
-    opacity: 0; transition: opacity .3s;
+    opacity: 0; transition: opacity .3s; pointer-events: none;
+    z-index: 0;
   }
-  .tier > * { position: relative; }
+  .tier > *:not(.tier-glow) { position: relative; z-index: 1; }
   .tier:hover { border-color: var(--line-2); transform: translateY(-4px); box-shadow: var(--shadow); }
-  .tier:hover::before { opacity: 1; }
+  .tier:hover .tier-glow { opacity: 1; }
   .tier.selected {
     border-color: var(--brand); background: var(--brand-soft);
     box-shadow: var(--brand-glow), 0 20px 50px -20px rgba(59,108,255,.35);
     transform: translateY(-2px);
   }
-  .tier.selected::before { opacity: 1; }
+  .tier.selected .tier-glow { opacity: 1; }
   .tier-check {
     position: absolute; top: 14px; right: 14px;
     width: 24px; height: 24px; border-radius: 999px;
@@ -324,14 +350,17 @@
     box-shadow: 0 4px 10px -2px var(--brand);
     opacity: 0; transform: scale(.6);
     transition: opacity .25s, transform .25s cubic-bezier(.34, 1.56, .64, 1);
+    z-index: 3;
   }
   .tier.selected .tier-check { opacity: 1; transform: scale(1); }
-  .tier.popular::after {
-    content: 'POPULAR'; position: absolute; top: -10px; right: 18px;
+  .tier-popular-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
     background: linear-gradient(180deg, var(--brand-hi), var(--brand));
     color: #fff; font-size: 10px; font-weight: 700;
-    padding: 4px 11px; border-radius: 999px; letter-spacing: .12em;
-    box-shadow: 0 6px 14px -4px var(--brand);
+    padding: 5px 14px; border-radius: 999px; letter-spacing: .14em;
+    box-shadow: 0 8px 18px -4px var(--brand), inset 0 1px 0 rgba(255,255,255,.25);
+    white-space: nowrap;
+    z-index: 3;
   }
   .tier-icon {
     width: 40px; height: 40px; border-radius: 10px;
@@ -1738,6 +1767,7 @@
       </div>
       <div class="tiers">
         <div class="tier ${WIZ_TIER === 'free' ? 'selected' : ''}" onclick="wizTier('free')">
+          <div class="tier-glow"></div>
           <div class="tier-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="tier-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/></svg></div>
           <div class="tier-name">Free</div>
@@ -1750,6 +1780,8 @@
           </ul>
         </div>
         <div class="tier popular ${WIZ_TIER === 'pro' ? 'selected' : ''}" onclick="wizTier('pro')">
+          <div class="tier-glow"></div>
+          <div class="tier-popular-badge">MÁS POPULAR</div>
           <div class="tier-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="tier-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></div>
           <div class="tier-name">Pro</div>
@@ -1763,6 +1795,7 @@
           </ul>
         </div>
         <div class="tier ${WIZ_TIER === 'plat' ? 'selected' : ''}" onclick="wizTier('plat')">
+          <div class="tier-glow"></div>
           <div class="tier-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="tier-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
           <div class="tier-name">Platinum</div>
@@ -1923,7 +1956,7 @@
     const h = WIZ_HERO[step] || WIZ_HERO[1];
     return `<div class="wiz-hero-visual">
       <div class="wiz-hero-inner">
-        <div>
+        <div class="wiz-hero-text">
           <div class="wiz-hero-step">PASO ${step} DE 8 · ONBOARDING</div>
           <div class="wiz-hero-title">${h.ttl}</div>
         </div>
