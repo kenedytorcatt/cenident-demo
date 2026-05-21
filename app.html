@@ -601,6 +601,94 @@
   .step-body { padding: 22px; }
   .section-label { font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); font-weight:500; margin-bottom: 10px; }
 
+  /* ===== Cola de pacientes (Paso 1) ===== */
+  .queue-list { display: flex; flex-direction: column; gap: 8px; }
+  .queue-row { display: flex; gap: 14px; align-items: center; padding: 12px 14px; background: var(--bg-1); border: 1px solid var(--line); border-radius: 9px; cursor: pointer; transition: all .15s; }
+  .queue-row:hover { background: var(--bg-3); border-color: var(--line-2); }
+  .queue-row.active { background: var(--brand-soft); border-color: var(--brand); box-shadow: var(--brand-glow); }
+  .qr-info { flex: 1; min-width: 0; }
+  .qr-name { font-size: 13.5px; font-weight: 600; display: flex; align-items: center; }
+  .qr-sub { font-size: 11.5px; color: var(--text-3); margin-top: 2px; }
+  .qr-time { font-size: 12px; color: var(--text-3); font-weight: 500; }
+
+  /* ===== Anamnesis (Paso 2) ===== */
+  .anam-block { background: var(--bg-1); border: 1px solid var(--line); border-radius: 9px; padding: 14px 16px; }
+  .anam-h { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; margin-bottom: 8px; }
+  .anam-body { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+  .anam-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* ===== Firma plan (Paso 5) ===== */
+  .sign-summary { background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; padding: 6px 14px; }
+  .ss-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  .ss-row:last-child { border-bottom: none; }
+  .ss-key { font-size: 12.5px; color: var(--text-3); }
+  .ss-val { font-size: 13px; color: var(--text-2); font-weight: 500; }
+  .sign-status { background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+  .ss-step { display: flex; gap: 12px; align-items: center; padding: 8px 0; }
+  .ss-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--bg-3); border: 2px solid var(--line); flex-shrink: 0; }
+  .ss-step.done .ss-dot { background: var(--pos); border-color: var(--pos); }
+  .ss-step.pending .ss-dot { background: var(--warn); border-color: var(--warn); animation: pulse 1.5s ease-in-out infinite; }
+  .ss-name { font-size: 12.5px; font-weight: 500; }
+  .ss-time { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+  .wa-preview { background: #128c7e; color: #fff; border-radius: 10px; padding: 14px; margin-top: 8px; }
+  .wa-h { display: flex; gap: 10px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.15); margin-bottom: 12px; }
+  .wa-msg { background: #075e54; padding: 10px 12px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+  .wa-time { font-size: 10.5px; color: rgba(255,255,255,.7); text-align: right; margin-top: 6px; }
+
+  /* ===== Cobro (Paso 6) ===== */
+  .cobro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .cobro-card { background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .cobro-eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+  .cobro-amt { font-family:'Geist Mono', monospace; font-size: 42px; font-weight: 700; letter-spacing: -.025em; line-height: 1; margin: 8px 0 20px; color: var(--brand-hi); }
+  .cobro-amt small { font-size: 14px; color: var(--text-3); font-weight: 400; font-family: 'Geist', sans-serif; }
+  .cm-opts { display: flex; flex-direction: column; gap: 6px; }
+  .cm-opt { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; font-size: 13px; }
+  .cm-opt:hover { background: var(--bg-3); }
+  .cm-opt.selected, .cm-opt:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); }
+  .cm-opt input { accent-color: var(--brand); }
+  .cobro-split { background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .split-row { height: 6px; background: var(--bg-3); border-radius: 999px; overflow: hidden; margin: 8px 0; }
+  .split-bar { height: 100%; border-radius: 999px; }
+  .split-item { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: center; padding: 4px 0; font-size: 12.5px; }
+  .si-name { display: flex; align-items: center; gap: 8px; color: var(--text-2); }
+  .si-dot { width: 8px; height: 8px; border-radius: 999px; }
+  .si-pct { color: var(--text-3); font-size: 11.5px; }
+  .si-amt { font-weight: 600; color: var(--text); }
+  .split-note { font-size: 11.5px; color: var(--text-3); padding-top: 10px; margin-top: 10px; border-top: 1px solid var(--line); line-height: 1.5; }
+
+  /* ===== Ejecución (Paso 7) ===== */
+  .session-list { display: flex; flex-direction: column; gap: 10px; }
+  .sess-card { display: grid; grid-template-columns: 38px 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; }
+  .sess-card.current { background: var(--brand-soft); border-color: var(--brand); }
+  .sess-num { width: 38px; height: 38px; border-radius: 10px; background: var(--bg-3); border: 1px solid var(--line); display: grid; place-items: center; font-family:'Geist Mono', monospace; font-weight: 700; font-size: 14px; color: var(--text-3); }
+  .sess-num.done { background: var(--pos); border-color: var(--pos); color: #fff; }
+  .sess-num.current { background: var(--brand); border-color: var(--brand); color: #fff; box-shadow: 0 0 0 4px var(--brand-soft); }
+  .sess-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .sess-meta { font-size: 12px; color: var(--text-3); }
+  .sess-meta b { color: var(--brand-hi); font-weight: 600; }
+  .sess-amt { font-family:'Geist Mono', monospace; font-weight: 700; font-size: 14px; }
+  .sess-amt small { font-size: 11px; color: var(--text-3); font-weight: 400; font-family: 'Geist', sans-serif; letter-spacing: 0; }
+  .sess-progress { margin-top: 8px; height: 6px; background: var(--bg-3); border-radius: 999px; overflow: hidden; }
+  .sp-bar { height: 100%; background: linear-gradient(90deg, var(--pos), var(--brand)); border-radius: 999px; transition: width .4s; }
+
+  /* ===== Próxima cita (Paso 8) ===== */
+  .next-dates { display: flex; flex-direction: column; gap: 8px; }
+  .nd-opt { display: flex; gap: 12px; align-items: center; padding: 14px 16px; background: var(--bg-1); border: 1px solid var(--line); border-radius: 9px; cursor: pointer; transition: all .15s; }
+  .nd-opt:hover { background: var(--bg-3); border-color: var(--line-2); }
+  .nd-opt.selected, .nd-opt:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); box-shadow: var(--brand-glow); }
+  .nd-opt input { accent-color: var(--brand); }
+  .nd-opt > div { flex: 1; }
+  .nd-day { font-size: 14px; font-weight: 600; }
+  .nd-time { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .next-proc { background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; gap: 16px; }
+  .np-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--brand-soft); border: 1px solid var(--brand-line); color: var(--brand-hi); display: grid; place-items: center; flex-shrink: 0; }
+  .np-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .np-sub { font-size: 12px; color: var(--text-3); }
+  .np-amt { font-size: 12.5px; color: var(--brand-hi); margin-top: 8px; font-weight: 600; }
+  .confirm-list { display: flex; flex-direction: column; gap: 8px; }
+  .confirm-list label { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); cursor: pointer; padding: 8px 12px; background: var(--bg-1); border: 1px solid var(--line); border-radius: 8px; }
+  .confirm-list input { accent-color: var(--brand); }
+
   /* ===== ODONTOGRAMA ===== */
   .odo-stage { background: linear-gradient(180deg, var(--bg-1), var(--bg-3)); border: 1px solid var(--line); border-radius: 10px; padding: 22px 18px 14px; position: relative; overflow: hidden; }
   .odo-stage::before { content:''; position:absolute; inset:0; background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 18px 18px; color: var(--line); opacity: .35; pointer-events: none; }
@@ -1498,12 +1586,15 @@
             <div class="tl-step done" onclick="tlGo(2, 'Anamnesis · dolor leve 26 al frío')"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Anamnesis</div><div class="tl-role">ASIST</div></div>
             <div class="tl-step done" onclick="tlGo(3, 'Exploración · odontograma completado')"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Exploración</div><div class="tl-role">ODONT</div></div>
             <div class="tl-step current" onclick="tlGo(4, 'Plan tratamiento · paso actual')"><div class="tl-circle">4</div><div class="tl-label">Plan tratamiento</div><div class="tl-role">ODONT</div></div>
-            <div class="tl-step locked" onclick="tlGo(5, 'Bloqueado · primero firma el plan')"><div class="tl-circle">5</div><div class="tl-label">Firma plan</div><div class="tl-role">PAC</div></div>
-            <div class="tl-step locked" onclick="tlGo(6, 'Bloqueado · firma y cobra antes')"><div class="tl-circle">6</div><div class="tl-label">Cobro</div><div class="tl-role">RECEP</div></div>
-            <div class="tl-step locked" onclick="tlGo(7, 'Bloqueado · pasos 4-6 pendientes')"><div class="tl-circle">7</div><div class="tl-label">Ejecución</div><div class="tl-role">ODONT</div></div>
-            <div class="tl-step locked" onclick="tlGo(8, 'Bloqueado · termina ejecución primero')"><div class="tl-circle">8</div><div class="tl-label">Próx. cita</div><div class="tl-role">RECEP</div></div>
+            <div class="tl-step" onclick="tlGo(5, 'Firma del plan · WhatsApp + biométrica')"><div class="tl-circle">5</div><div class="tl-label">Firma plan</div><div class="tl-role">PAC</div></div>
+            <div class="tl-step" onclick="tlGo(6, 'Cobro · split Stripe Connect')"><div class="tl-circle">6</div><div class="tl-label">Cobro</div><div class="tl-role">RECEP</div></div>
+            <div class="tl-step" onclick="tlGo(7, 'Ejecución · sesión 2 de 3 en curso')"><div class="tl-circle">7</div><div class="tl-label">Ejecución</div><div class="tl-role">ODONT</div></div>
+            <div class="tl-step" onclick="tlGo(8, 'Próxima cita · agendar siguiente sesión')"><div class="tl-circle">8</div><div class="tl-label">Próx. cita</div><div class="tl-role">RECEP</div></div>
           </div>
         </div>
+
+        <!-- Contenedor dinámico para pasos 1,2,5,6,7,8 -->
+        <div id="tlDynamic"></div>
 
         <!-- Step 3 · Odontograma -->
         <div class="step-card">
@@ -2340,28 +2431,266 @@
     toast(msg);
   }
 
-  // ============ TIMELINE STEPS ============
-  // Mapa de cada paso a la sección que debe destacar/scrollear
-  const TL_TARGETS = {
-    3: '.step-card:has(.step-num.done)', // Exploración · odontograma
-    4: '.kanban', // Plan tratamiento · kanban
+  // ============ TIMELINE STEPS · CADA PASO TIENE SU PANTALLA REAL ============
+  const TL_CONTENT = {
+    1: () => `
+      <div class="step-card">
+        <div class="step-head">
+          <div style="display:flex; gap: 14px"><div class="step-num done">01</div><div>
+            <div style="font-size:15px; font-weight:600">Llegada · sala de espera</div>
+            <div class="step-meta-row">Hora estimada: <b>14:00</b> · Real: <b>13:55</b> · Tiempo de espera: <b>0 min</b></div>
+          </div></div>
+          <span class="pill pill-pos"><span class="dot"></span>En sillón 2</span>
+        </div>
+        <div class="step-body">
+          <div class="section-label">Cola de pacientes hoy</div>
+          <div class="queue-list">
+            <div class="queue-row active">
+              <div class="av sm">ML</div>
+              <div class="qr-info"><div class="qr-name">Marta López <span class="pill pill-pos" style="margin-left:6px"><span class="dot"></span>en sillón</span></div><div class="qr-sub">14:00 · Dr. Ruiz · Sillón 2</div></div>
+              <div class="qr-time mono">13:55</div>
+            </div>
+            <div class="queue-row">
+              <div class="av sm" style="background:linear-gradient(135deg,#8b5cf6,#5b21b6)">JG</div>
+              <div class="qr-info"><div class="qr-name">Juan García</div><div class="qr-sub">14:30 · Dr. Ruiz · Limpieza</div></div>
+              <div class="qr-time mono">esperando</div>
+            </div>
+            <div class="queue-row">
+              <div class="av sm" style="background:linear-gradient(135deg,#34d399,#00a878)">AR</div>
+              <div class="qr-info"><div class="qr-name">Ana Ramírez</div><div class="qr-sub">15:00 · Dra. García · Ortodoncia control</div></div>
+              <div class="qr-time mono">por confirmar</div>
+            </div>
+            <div class="queue-row">
+              <div class="av sm" style="background:linear-gradient(135deg,#fbbf24,#c47a00)">RM</div>
+              <div class="qr-info"><div class="qr-name">Roberto Méndez</div><div class="qr-sub">15:30 · Dr. Ruiz · Endodoncia sesión 2/3</div></div>
+              <div class="qr-time mono">confirmado WA</div>
+            </div>
+          </div>
+        </div>
+      </div>`,
+    2: () => `
+      <div class="step-card">
+        <div class="step-head">
+          <div style="display:flex; gap: 14px"><div class="step-num done">02</div><div>
+            <div style="font-size:15px; font-weight:600">Anamnesis · historia clínica de la consulta</div>
+            <div class="step-meta-row">Realizado por <b>Carla Méndez</b> · asistente · 14:02</div>
+          </div></div>
+          <span class="pill pill-pos"><span class="dot"></span>Completado</span>
+        </div>
+        <div class="step-body">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 18px">
+            <div class="anam-block">
+              <div class="anam-h">Motivo de la consulta</div>
+              <div class="anam-body">Dolor leve en pieza 26 al masticar alimentos fríos. Empezó hace 2 semanas, ha ido empeorando.</div>
+            </div>
+            <div class="anam-block">
+              <div class="anam-h">Síntomas actuales</div>
+              <div class="anam-tags">
+                <span class="pill pill-warn"><span class="dot"></span>Dolor frío leve</span>
+                <span class="pill pill-neu"><span class="dot"></span>Sin sangrado</span>
+                <span class="pill pill-neu"><span class="dot"></span>Sin hinchazón</span>
+              </div>
+            </div>
+            <div class="anam-block">
+              <div class="anam-h">Antecedentes médicos</div>
+              <div class="anam-body">Hipertensión controlada (Losartán 50mg). Sin alergias conocidas. No fumadora.</div>
+            </div>
+            <div class="anam-block">
+              <div class="anam-h">Medicación actual</div>
+              <div class="anam-body mono" style="font-size:12px">Losartán 50mg · 1x día (mañana)</div>
+            </div>
+            <div class="anam-block" style="grid-column: 1 / -1">
+              <div class="anam-h">Notas de la consulta · transcripción IA validada</div>
+              <div class="anam-body" style="line-height:1.55">"La paciente refiere sensibilidad en cuadrante superior izquierdo, particularmente al primer molar. Sin dolor espontáneo. Sin antecedentes de trauma reciente. Última limpieza hace 8 meses. Buena higiene oral aparente. Recomiendo radiografía periapical antes de definir conducta."</div>
+              <div style="display:flex; gap:8px; margin-top:10px">
+                <button class="btn-ghost" onclick="toast('Audio reproducido')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:inline; vertical-align:-2px; margin-right:6px"><polygon points="6 4 20 12 6 20 6 4"/></svg>Escuchar grabación</button>
+                <button class="btn-ghost" onclick="toast('Texto editado guardado')">Editar transcripción</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`,
+    5: () => `
+      <div class="step-card">
+        <div class="step-head">
+          <div style="display:flex; gap: 14px"><div class="step-num">05</div><div>
+            <div style="font-size:15px; font-weight:600">Firma del plan · consentimiento digital</div>
+            <div class="step-meta-row">Vía <b>WhatsApp + firma biométrica</b> · documento legal con timestamp</div>
+          </div></div>
+          <button class="btn-brand" onclick="signPlan()">Solicitar firma por WhatsApp</button>
+        </div>
+        <div class="step-body">
+          <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap: 22px">
+            <div>
+              <div class="section-label">Resumen del plan a firmar</div>
+              <div class="sign-summary">
+                <div class="ss-row"><div class="ss-key">Paciente</div><div class="ss-val">Marta López Hernández</div></div>
+                <div class="ss-row"><div class="ss-key">Doctor responsable</div><div class="ss-val">Dr. Ruiz · CED 1234567</div></div>
+                <div class="ss-row"><div class="ss-key">Procedimientos aceptados</div><div class="ss-val">3 (Limpieza, Obturación 26, Endodoncia 37)</div></div>
+                <div class="ss-row"><div class="ss-key">Total del plan</div><div class="ss-val mono" style="color:var(--text)">$7,400 MXN</div></div>
+                <div class="ss-row"><div class="ss-key">IVA 16% incluido</div><div class="ss-val mono">$1,021 MXN</div></div>
+                <div class="ss-row" style="background:var(--brand-soft); margin: 4px -10px 0; padding: 12px 10px; border-radius: 8px"><div class="ss-key" style="color:var(--brand-hi); font-weight:600">Pago inicial · 40%</div><div class="ss-val mono" style="color:var(--brand-hi); font-size:16px; font-weight:700">$2,960 MXN</div></div>
+              </div>
+            </div>
+            <div>
+              <div class="section-label">Estado de firma</div>
+              <div class="sign-status">
+                <div class="ss-step done"><div class="ss-dot"></div><div><div class="ss-name">Plan generado</div><div class="ss-time mono">14:32</div></div></div>
+                <div class="ss-step done"><div class="ss-dot"></div><div><div class="ss-name">Enviado por WhatsApp</div><div class="ss-time mono">14:33 · visto</div></div></div>
+                <div class="ss-step pending"><div class="ss-dot"></div><div><div class="ss-name">Esperando firma</div><div class="ss-time mono">pendiente</div></div></div>
+                <div class="ss-step"><div class="ss-dot"></div><div><div class="ss-name">Cobro habilitado</div><div class="ss-time mono">próximo paso</div></div></div>
+              </div>
+              <div class="wa-preview">
+                <div class="wa-h"><div class="av sm" style="background:#25d366">WA</div><div><div style="font-size:12px; font-weight:600">Marta López</div><div style="font-size:11px; color:var(--text-3)">+52 55 1234 5678</div></div></div>
+                <div class="wa-msg">Hola Marta 👋 Tu plan está listo para firmar. Toca el link para revisarlo: <span style="color:var(--brand-hi)">cenident.com/firma/x9j2k4</span></div>
+                <div class="wa-time mono">14:33 ✓✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`,
+    6: () => `
+      <div class="step-card">
+        <div class="step-head">
+          <div style="display:flex; gap: 14px"><div class="step-num">06</div><div>
+            <div style="font-size:15px; font-weight:600">Cobro · split automático Stripe Connect</div>
+            <div class="step-meta-row">El cobro se reparte automáticamente: doctor, clínica y Cenident</div>
+          </div></div>
+          <span class="pill pill-warn"><span class="dot"></span>Pendiente firma</span>
+        </div>
+        <div class="step-body">
+          <div class="cobro-grid">
+            <div class="cobro-card">
+              <div class="cobro-eyebrow">A COBRAR HOY · 40%</div>
+              <div class="cobro-amt">$2,960<small> MXN</small></div>
+              <div class="cobro-method">
+                <div style="font-size:12px; color:var(--text-3); margin-bottom:8px">MÉTODO DE PAGO</div>
+                <div class="cm-opts">
+                  <label class="cm-opt selected"><input type="radio" name="cm" checked/><svg width="22" height="14" viewBox="0 0 32 20" fill="currentColor"><rect width="32" height="20" rx="3" fill="#1a1a1a"/><circle cx="13" cy="10" r="6" fill="#eb001b" opacity=".9"/><circle cx="19" cy="10" r="6" fill="#f79e1b" opacity=".9"/></svg>Tarjeta •••• 4242</label>
+                  <label class="cm-opt"><input type="radio" name="cm"/><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Efectivo en clínica</label>
+                  <label class="cm-opt"><input type="radio" name="cm"/><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Transferencia SPEI</label>
+                </div>
+              </div>
+              <button class="btn-brand lg" style="width:100%; margin-top: 14px" onclick="toast('Cobro procesado · split ejecutado')">Cobrar $2,960</button>
+            </div>
+            <div class="cobro-split">
+              <div class="section-label">Distribución del cobro</div>
+              <div class="split-row"><div class="split-bar" style="width:78%; background:linear-gradient(90deg, var(--brand-hi), var(--brand))"></div></div>
+              <div class="split-item"><div class="si-name"><div class="si-dot" style="background:var(--brand-hi)"></div>Dr. Ruiz · doctor productor</div><div class="si-pct mono">78%</div><div class="si-amt mono">$2,308.80</div></div>
+              <div class="split-row"><div class="split-bar" style="width:15%; background:var(--info)"></div></div>
+              <div class="split-item"><div class="si-name"><div class="si-dot" style="background:var(--info)"></div>Clínica San José</div><div class="si-pct mono">15%</div><div class="si-amt mono">$444.00</div></div>
+              <div class="split-row"><div class="split-bar" style="width:7%; background:var(--text-3)"></div></div>
+              <div class="split-item"><div class="si-name"><div class="si-dot" style="background:var(--text-3)"></div>Cenident · plataforma</div><div class="si-pct mono">7%</div><div class="si-amt mono">$207.20</div></div>
+              <div class="split-note">Stripe ejecuta los 3 payouts automáticamente al cierre del día.</div>
+            </div>
+          </div>
+        </div>
+      </div>`,
+    7: () => `
+      <div class="step-card">
+        <div class="step-head">
+          <div style="display:flex; gap: 14px"><div class="step-num">07</div><div>
+            <div style="font-size:15px; font-weight:600">Ejecución del tratamiento · sesiones</div>
+            <div class="step-meta-row">Cobros por avance % · cada sesión completada habilita el siguiente cobro</div>
+          </div></div>
+          <span class="pill pill-brand"><span class="dot"></span>1 de 3 sesiones</span>
+        </div>
+        <div class="step-body">
+          <div class="session-list">
+            <div class="sess-card done">
+              <div class="sess-num done">1</div>
+              <div class="sess-info">
+                <div class="sess-name">Limpieza profunda</div>
+                <div class="sess-meta">12 nov · 14:00-14:45 · Dr. Ruiz · Sillón 2</div>
+              </div>
+              <div class="sess-amt mono">$1,800<small> · cobrado</small></div>
+            </div>
+            <div class="sess-card current">
+              <div class="sess-num current">2</div>
+              <div class="sess-info">
+                <div class="sess-name">Obturación composite · pieza 26</div>
+                <div class="sess-meta">Hoy · 14:00-15:30 · Dr. Ruiz · Sillón 2</div>
+                <div class="sess-progress"><div class="sp-bar" style="width:65%"></div></div>
+                <div class="sess-meta" style="margin-top:4px"><b>65% completado</b> · anestesia aplicada, removiendo caries</div>
+              </div>
+              <div class="sess-amt mono">$2,400<small> · en curso</small></div>
+            </div>
+            <div class="sess-card">
+              <div class="sess-num">3</div>
+              <div class="sess-info">
+                <div class="sess-name">Endodoncia · pieza 37</div>
+                <div class="sess-meta">28 nov · agendado · Dr. Ruiz · Sillón 3</div>
+              </div>
+              <div class="sess-amt mono">$3,200<small> · próximo</small></div>
+            </div>
+          </div>
+          <div style="margin-top: 18px; padding: 14px 16px; background: var(--bg-1); border: 1px solid var(--line); border-radius: 10px; display: flex; justify-content: space-between; align-items: center">
+            <div>
+              <div style="font-size:12px; color:var(--text-3)">PROGRESO TOTAL DEL PLAN</div>
+              <div style="display:flex; align-items:center; gap: 10px; margin-top: 4px">
+                <div style="height: 8px; width: 240px; background: var(--bg-3); border-radius: 999px; overflow: hidden"><div style="height: 100%; width: 55%; background: linear-gradient(90deg, var(--pos), var(--brand)); border-radius: 999px"></div></div>
+                <span class="mono" style="font-weight: 700; color: var(--brand-hi)">55%</span>
+              </div>
+            </div>
+            <button class="btn-brand" onclick="toast('Sesión 2 finalizada · siguiente cobro habilitado')">Finalizar sesión 2</button>
+          </div>
+        </div>
+      </div>`,
+    8: () => `
+      <div class="step-card">
+        <div class="step-head">
+          <div style="display:flex; gap: 14px"><div class="step-num">08</div><div>
+            <div style="font-size:15px; font-weight:600">Próxima cita · agendar siguiente sesión</div>
+            <div class="step-meta-row">Sistema sugiere fechas óptimas según el tratamiento y la agenda</div>
+          </div></div>
+          <span class="pill pill-neu"><span class="dot"></span>Sin agendar aún</span>
+        </div>
+        <div class="step-body">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px">
+            <div>
+              <div class="section-label">Fechas sugeridas</div>
+              <div class="next-dates">
+                <label class="nd-opt selected"><input type="radio" name="nd" checked/><div><div class="nd-day">Lun 28 nov</div><div class="nd-time">14:00 · Dr. Ruiz · Sillón 2</div></div><span class="pill pill-pos"><span class="dot"></span>óptimo</span></label>
+                <label class="nd-opt"><input type="radio" name="nd"/><div><div class="nd-day">Mié 30 nov</div><div class="nd-time">10:30 · Dr. Ruiz · Sillón 2</div></div></label>
+                <label class="nd-opt"><input type="radio" name="nd"/><div><div class="nd-day">Vie 2 dic</div><div class="nd-time">16:00 · Dr. Ruiz · Sillón 1</div></div></label>
+              </div>
+            </div>
+            <div>
+              <div class="section-label">Procedimiento siguiente</div>
+              <div class="next-proc">
+                <div class="np-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></div>
+                <div>
+                  <div class="np-name">Endodoncia · pieza 37</div>
+                  <div class="np-sub">Sesión 3 de 3 · duración estimada 90 min</div>
+                  <div class="np-amt mono">$3,200 MXN · pago habilitado al terminar sesión 2</div>
+                </div>
+              </div>
+              <div class="section-label" style="margin-top: 18px">Confirmación al paciente</div>
+              <div class="confirm-list">
+                <label><input type="checkbox" checked/> Recordatorio WhatsApp 24h antes</label>
+                <label><input type="checkbox" checked/> Recordatorio WhatsApp 2h antes</label>
+                <label><input type="checkbox"/> Llamada de recepción 1 día antes</label>
+                <label><input type="checkbox" checked/> Email con preparación de la sesión</label>
+              </div>
+              <button class="btn-brand lg" style="width:100%; margin-top: 14px" onclick="confirmNextAppt()">Confirmar cita · 28 nov</button>
+            </div>
+          </div>
+        </div>
+      </div>`
   };
+
   function tlGo(n, msg) {
-    toast(msg);
     const steps = document.querySelectorAll('.tl-step');
-    if (steps[n-1].classList.contains('locked')) return;
+    if (steps[n-1].classList.contains('locked')) { toast(msg); return; }
     // Cambiar current visual
     steps.forEach((s, i) => {
       s.classList.remove('current');
       if (i + 1 === n) s.classList.add('current');
     });
-    // Barra de progreso
+    // Barra progreso
     const prog = document.querySelector('.tl-progress');
-    if (prog) {
-      const pct = (n - 1) / 7;
-      prog.style.width = 'calc((100% - 44px) * ' + pct + ')';
-    }
-    // Refrescar números
+    if (prog) prog.style.width = 'calc((100% - 44px) * ' + ((n - 1) / 7) + ')';
+    // Refrescar numerito del current
     steps.forEach((s, i) => {
       const c = s.querySelector('.tl-circle');
       if (s.classList.contains('done')) {
@@ -2370,26 +2699,32 @@
         c.textContent = i + 1;
       }
     });
-    // Scroll a la sección correspondiente
-    let target = null;
-    if (n === 1 || n === 2) target = document.querySelector('.patient-card');
-    else if (n === 3) {
-      // Odontograma · primer step-card
-      const cards = document.querySelectorAll('.step-card');
-      target = cards[0];
+    // Renderizar contenido en el contenedor dinámico
+    const container = document.getElementById('tlDynamic');
+    if (TL_CONTENT[n]) {
+      container.innerHTML = TL_CONTENT[n]();
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      container.style.transition = 'box-shadow .4s';
+      container.firstElementChild.style.boxShadow = '0 0 0 3px var(--brand), 0 24px 60px -20px rgba(59,108,255,.4)';
+      setTimeout(() => { if (container.firstElementChild) container.firstElementChild.style.boxShadow = ''; }, 1600);
+    } else {
+      // Pasos 3 (odontograma) y 4 (kanban) son los step-cards estáticos del HTML
+      container.innerHTML = '';
+      const cards = document.querySelectorAll('.with-chat .step-card');
+      const fixed = n === 3 ? cards[0] : (n === 4 ? cards[1] : null);
+      if (fixed) {
+        fixed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        fixed.style.transition = 'box-shadow .4s';
+        fixed.style.boxShadow = '0 0 0 3px var(--brand), 0 24px 60px -20px rgba(59,108,255,.4)';
+        setTimeout(() => { fixed.style.boxShadow = ''; }, 1600);
+      }
     }
-    else if (n === 4) {
-      // Plan · segundo step-card
-      const cards = document.querySelectorAll('.step-card');
-      target = cards[1];
-    }
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Highlight breve
-      target.style.transition = 'box-shadow .4s';
-      target.style.boxShadow = '0 0 0 3px var(--brand), 0 24px 60px -20px rgba(59,108,255,.4)';
-      setTimeout(() => { target.style.boxShadow = ''; }, 1600);
-    }
+    toast(msg);
+  }
+
+  function confirmNextAppt() {
+    fireConfetti();
+    toast('Cita confirmada · 28 nov a las 14:00');
   }
 
   // ============ ROLES ============
