@@ -4,6 +4,16 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v1.5 · 2026-05-21
+
+**Fix layout wizard plan activo + nombre plan.**
+
+- Badge "ACTIVO" se montaba encima del título "PLAN CONTRATADO". Ahora el badge va en una barra superior dedicada al lado del eyebrow, sin solaparse
+- Plan del wizard renombrado de "Más vendido" → "**Plan Pro**" (más limpio y directo)
+- El nombre "Mejor opción" se reserva para el plan Platinum en la página de precios pre-pago (no aplica al wizard porque ahí el usuario ya pagó)
+
+---
+
 ## v1.4 · 2026-05-21
 
 **Pulido + lógica de wizard corregida.**

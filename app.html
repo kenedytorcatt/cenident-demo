@@ -424,7 +424,7 @@
     background: var(--bg-2);
     border: 2px solid var(--brand);
     border-radius: 12px;
-    padding: 26px 28px 22px;
+    padding: 24px 28px 22px;
     box-shadow: 0 20px 50px -20px rgba(59,108,255,.35), 0 0 0 4px var(--brand-soft);
     overflow: hidden;
   }
@@ -435,26 +435,27 @@
     z-index: 0;
   }
   .plan-active > *:not(.plan-active-glow) { position: relative; z-index: 1; }
+  .plan-active-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 18px;
+  }
+  .plan-active-eyebrow {
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-3); font-weight: 600;
+  }
   .plan-active-badge {
-    position: absolute; top: 18px; right: 22px;
     display: inline-flex; align-items: center; gap: 6px;
     background: var(--pos); color: #fff;
     padding: 5px 11px; border-radius: 999px;
     font-size: 10.5px; font-weight: 700; letter-spacing: .12em;
     box-shadow: 0 6px 14px -4px var(--pos);
-    z-index: 2;
   }
   .plan-active-h {
-    display: flex; justify-content: space-between; align-items: flex-start;
+    display: flex; justify-content: space-between; align-items: flex-end;
     gap: 24px; margin-bottom: 20px;
-    padding-right: 80px;
-  }
-  .plan-active-eyebrow {
-    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--text-3); font-weight: 600; margin-bottom: 8px;
   }
   .plan-active-name {
-    font-size: 30px; font-weight: 700; letter-spacing: -.025em; line-height: 1;
+    font-size: 32px; font-weight: 700; letter-spacing: -.025em; line-height: 1;
     color: var(--text);
   }
   .plan-active-price { text-align: right; }
@@ -2043,11 +2044,13 @@
       </div>
       <div class="plan-active">
         <div class="plan-active-glow"></div>
-        <div class="plan-active-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> ACTIVO</div>
+        <div class="plan-active-topbar">
+          <div class="plan-active-eyebrow">PLAN CONTRATADO</div>
+          <div class="plan-active-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> ACTIVO</div>
+        </div>
         <div class="plan-active-h">
           <div>
-            <div class="plan-active-eyebrow">PLAN CONTRATADO</div>
-            <div class="plan-active-name">Más vendido</div>
+            <div class="plan-active-name">Plan Pro</div>
           </div>
           <div class="plan-active-price">
             <div class="amt">$2,900<small> / mes</small></div>
