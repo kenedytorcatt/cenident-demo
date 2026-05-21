@@ -133,7 +133,7 @@
   // Cache-buster: cambiar BUILD_ID en cada deploy para forzar URL nueva (esquiva cache CDN)
   const BUILD_ID = 'v13-' + Date.now();
   if (sessionStorage.getItem('cdAccess') === 'ok') {
-    location.replace('./app.html?b=' + BUILD_ID);
+    location.replace('./app2.html?b=' + BUILD_ID);
   }
 
   // SHA-256 de la clave correcta (se genera con: echo -n "tuClave" | sha256sum)
@@ -155,7 +155,7 @@
     if (pw === 'cenident2026') {
       sessionStorage.setItem('cdAccess', 'ok');
       err.classList.remove('show');
-      location.replace('./app.html?b=' + BUILD_ID);
+      location.replace('./app2.html?b=' + BUILD_ID);
     } else {
       err.classList.add('show');
       document.getElementById('pw').value = '';
