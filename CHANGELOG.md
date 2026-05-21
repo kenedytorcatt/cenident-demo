@@ -4,6 +4,45 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v2.1-baseline · 2026-05-21 · APROBADO COMO PUNTO DE PARTIDA
+
+**Primer demo 100% funcional aprobado. Punto de partida sobre el cual se desarrollan los ajustes futuros antes de codificar en Next.js + Go + PostgreSQL.**
+
+A partir de aquí, todos los cambios son ajustes incrementales según feedback del socio. Cuando los ajustes finales estén aprobados, se codifica en Next.js respetando exactamente esta estructura visual y de flujos.
+
+**Release:** https://github.com/kenedytorcatt/cenident-demo/releases/tag/v2.1-baseline
+
+### Estado aprobado del demo
+- Web pública completa (Academia / Precios / Nosotros / Contacto / Login)
+- Wizard de clínica de 7 pasos navegables
+- App con timeline de 8 pasos 100% funcionales (cada uno con su pantalla real)
+- Odontograma FDI · 3D Sketchfab · Kanban drag&drop con cálculo en vivo
+- Chat staff · 5 roles · 7 países con recálculo IVA · dark/light · ⌘K
+- Login modal · pill modo demo · footer público
+
+### Verificado en producción
+- Playwright headless probó los 8 pasos · drag&drop · navegación · modal login
+- 0 errores JS de runtime
+- Sin overlays invisibles · todos los elementos clickeables
+
+---
+
+## v2.1 · 2026-05-21
+
+**Timeline 8 pasos 100% funcional con secciones reales.**
+
+Cada paso de la timeline ahora abre su pantalla específica con datos demo:
+- Paso 1 (Llegada): cola de pacientes hoy con sillón asignado
+- Paso 2 (Anamnesis): formulario con motivo, síntomas, antecedentes, medicación, transcripción IA validada con botones "Escuchar grabación" + "Editar"
+- Paso 5 (Firma): resumen del plan + estado de firma (4 estados) + preview WhatsApp verde con mensaje real
+- Paso 6 (Cobro): $2,960 grande + selector método + split visual Stripe (78% doctor / 15% clínica / 7% Cenident) con barras
+- Paso 7 (Ejecución): 3 sesiones con progreso individual + barra total del plan al 55%
+- Paso 8 (Próxima cita): 3 fechas sugeridas + procedimiento siguiente + confirmación multi-canal
+
+Desbloqueados pasos 5-8 (antes eran `locked` y solo mostraban toast).
+
+---
+
 ## v2.0 · 2026-05-21
 
 **Rearmado total de arquitectura web pública.**
