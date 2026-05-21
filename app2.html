@@ -1494,14 +1494,14 @@
           </div>
           <div class="tl-track">
             <div class="tl-progress"></div>
-            <div class="tl-step done"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Llegada</div><div class="tl-role">RECEP</div></div>
-            <div class="tl-step done"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Anamnesis</div><div class="tl-role">ASIST</div></div>
-            <div class="tl-step done"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Exploración</div><div class="tl-role">ODONT</div></div>
-            <div class="tl-step current"><div class="tl-circle">4</div><div class="tl-label">Plan tratamiento</div><div class="tl-role">ODONT</div></div>
-            <div class="tl-step locked"><div class="tl-circle">5</div><div class="tl-label">Firma plan</div><div class="tl-role">PAC</div></div>
-            <div class="tl-step locked"><div class="tl-circle">6</div><div class="tl-label">Cobro</div><div class="tl-role">RECEP</div></div>
-            <div class="tl-step locked"><div class="tl-circle">7</div><div class="tl-label">Ejecución</div><div class="tl-role">ODONT</div></div>
-            <div class="tl-step locked"><div class="tl-circle">8</div><div class="tl-label">Próx. cita</div><div class="tl-role">RECEP</div></div>
+            <div class="tl-step done" onclick="tlGo(1, 'Llegada · paciente registrado')"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Llegada</div><div class="tl-role">RECEP</div></div>
+            <div class="tl-step done" onclick="tlGo(2, 'Anamnesis · dolor leve 26 al frío')"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Anamnesis</div><div class="tl-role">ASIST</div></div>
+            <div class="tl-step done" onclick="tlGo(3, 'Exploración · odontograma completado')"><div class="tl-circle"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tl-label">Exploración</div><div class="tl-role">ODONT</div></div>
+            <div class="tl-step current" onclick="tlGo(4, 'Plan tratamiento · paso actual')"><div class="tl-circle">4</div><div class="tl-label">Plan tratamiento</div><div class="tl-role">ODONT</div></div>
+            <div class="tl-step locked" onclick="tlGo(5, 'Bloqueado · primero firma el plan')"><div class="tl-circle">5</div><div class="tl-label">Firma plan</div><div class="tl-role">PAC</div></div>
+            <div class="tl-step locked" onclick="tlGo(6, 'Bloqueado · firma y cobra antes')"><div class="tl-circle">6</div><div class="tl-label">Cobro</div><div class="tl-role">RECEP</div></div>
+            <div class="tl-step locked" onclick="tlGo(7, 'Bloqueado · pasos 4-6 pendientes')"><div class="tl-circle">7</div><div class="tl-label">Ejecución</div><div class="tl-role">ODONT</div></div>
+            <div class="tl-step locked" onclick="tlGo(8, 'Bloqueado · termina ejecución primero')"><div class="tl-circle">8</div><div class="tl-label">Próx. cita</div><div class="tl-role">RECEP</div></div>
           </div>
         </div>
 
@@ -2331,6 +2331,33 @@
     document.querySelectorAll('.tooth').forEach(t => t.classList.remove('selected'));
     document.querySelector(`.tooth[data-n="${n}"]`).classList.add('selected');
     toast(`Pieza ${n} seleccionada`);
+  }
+
+  // ============ TIMELINE STEPS ============
+  function tlGo(n, msg) {
+    toast(msg);
+    // Visual: setear current al paso clickeado (excepto si locked)
+    const steps = document.querySelectorAll('.tl-step');
+    if (steps[n-1].classList.contains('locked')) return;
+    steps.forEach((s, i) => {
+      s.classList.remove('current');
+      if (i + 1 === n) s.classList.add('current');
+    });
+    // Actualizar barra de progreso
+    const prog = document.querySelector('.tl-progress');
+    if (prog) {
+      const pct = (n - 1) / 7;
+      prog.style.width = 'calc((100% - 44px) * ' + pct + ')';
+    }
+    // Cambiar número del círculo del current
+    steps.forEach((s, i) => {
+      const c = s.querySelector('.tl-circle');
+      if (s.classList.contains('done')) {
+        c.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>';
+      } else {
+        c.textContent = i + 1;
+      }
+    });
   }
 
   // ============ ROLES ============
