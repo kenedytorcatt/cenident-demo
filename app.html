@@ -620,102 +620,149 @@
   .help-btn { width: 20px; height: 20px; border-radius: 999px; background: var(--bg-3); border: 1px solid var(--line); color: var(--text-3); display: inline-grid; place-items: center; cursor: pointer; font-size: 11px; flex-shrink: 0; }
   .help-btn:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
 
-  /* ============ LMS · NETFLIX FULL-WIDTH ============ */
-  /* Hero anuncio poster · NO video · imagen de fondo editable */
+  /* ============ LMS · HERO PREMIUM (texto izquierda + card anuncio derecha) ============ */
   .lms-hero {
     position: relative; overflow: hidden;
-    min-height: 480px;
     background:
-      linear-gradient(90deg, rgba(5,5,5,.85) 0%, rgba(5,5,5,.45) 50%, transparent 100%),
-      linear-gradient(180deg, transparent 60%, var(--bg-1) 100%),
-      url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1920&q=80') center/cover no-repeat,
-      #0a0a0a;
-  }
-  .lms-hero::before {
-    content:''; position:absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,.20) 0%, transparent 30%);
-    pointer-events: none;
+      radial-gradient(1200px 500px at 80% 50%, rgba(91,111,245,.10), transparent 60%),
+      radial-gradient(900px 400px at 10% 80%, rgba(139,92,246,.08), transparent 60%),
+      var(--bg-1);
+    padding: 60px 0 40px;
   }
   .lms-hero-inner {
     position: relative; z-index: 2;
-    max-width: 1440px; margin: 0 auto; padding: 80px 56px 100px;
-    display: flex; flex-direction: column; justify-content: center;
-    min-height: 480px; color: #fff;
+    max-width: 1320px; margin: 0 auto; padding: 0 56px;
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 48px; align-items: center;
+    min-height: 480px;
   }
+  .lms-hero-left { padding: 24px 0; }
   .lms-hero-tag-ad {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,.20);
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-line);
     padding: 6px 14px; border-radius: 6px;
     font-size: 10.5px; font-weight: 700; letter-spacing: .16em;
-    color: rgba(255,255,255,.95);
+    color: var(--brand-hi);
     margin-bottom: 22px; width: max-content;
   }
   .lms-hero-tag-ad .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--brand-hi); box-shadow: 0 0 8px var(--brand-hi); }
   .lms-hero-title-big {
-    font-size: 54px; font-weight: 700; letter-spacing: -.035em; line-height: 1.02;
-    margin-bottom: 18px; max-width: 720px;
-    color: #fff;
-    text-shadow: 0 4px 30px rgba(0,0,0,.5);
+    font-size: 52px; font-weight: 700; letter-spacing: -.035em; line-height: 1.02;
+    margin-bottom: 18px; max-width: 540px;
+    color: var(--text);
   }
+  .lms-hero-title-big em { color: var(--brand-hi); font-weight: 700; }
   .lms-hero-subtitle {
-    font-size: 16.5px; color: rgba(255,255,255,.82); line-height: 1.55;
-    max-width: 540px; margin-bottom: 26px;
-    text-shadow: 0 2px 8px rgba(0,0,0,.4);
+    font-size: 16.5px; color: var(--text-2); line-height: 1.55;
+    max-width: 480px; margin-bottom: 26px;
   }
   .lms-hero-meta {
-    display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
-    margin-bottom: 28px; font-size: 13px; color: rgba(255,255,255,.85);
+    display: flex; gap: 22px; align-items: center; flex-wrap: wrap;
+    margin-bottom: 28px; font-size: 13px; color: var(--text-3);
   }
-  .lms-hero-meta b { color: #fff; font-weight: 600; }
-  .lms-hero-meta .star { color: #fbbf24; }
-  .lms-hero-meta .sep { width: 4px; height: 4px; border-radius: 999px; background: rgba(255,255,255,.35); }
+  .lms-hero-meta b { color: var(--text); font-weight: 600; }
+  .lms-hero-meta .sep { width: 4px; height: 4px; border-radius: 999px; background: var(--line-2); }
   .lms-hero-actions { display: flex; gap: 10px; }
   .btn-hero-pri {
-    background: #fff; color: #000;
-    padding: 13px 28px; border: none; border-radius: 6px;
+    background: linear-gradient(180deg, var(--brand-hi), var(--brand));
+    color: #fff;
+    padding: 13px 28px; border: 1px solid color-mix(in oklab, var(--brand) 70%, #000 0); border-radius: 6px;
     font-size: 14.5px; font-weight: 600; cursor: pointer;
     display: inline-flex; align-items: center; gap: 8px;
     font-family: inherit;
-    transition: background .15s, transform .15s;
+    box-shadow: 0 12px 30px -10px rgba(59,108,255,.45);
+    transition: filter .15s, transform .15s, box-shadow .25s;
   }
-  .btn-hero-pri:hover { background: rgba(255,255,255,.85); transform: translateY(-1px); }
+  .btn-hero-pri:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 16px 36px -10px rgba(59,108,255,.55); }
   .btn-hero-sec {
-    background: rgba(109,109,114,.55);
-    backdrop-filter: blur(8px);
-    color: #fff; padding: 13px 28px; border: none; border-radius: 6px;
+    background: var(--bg-2);
+    color: var(--text); padding: 13px 28px; border: 1px solid var(--line); border-radius: 6px;
     font-size: 14.5px; font-weight: 600; cursor: pointer;
     display: inline-flex; align-items: center; gap: 8px;
     font-family: inherit;
-    transition: background .15s;
+    transition: background .15s, border-color .15s;
   }
-  .btn-hero-sec:hover { background: rgba(109,109,114,.75); }
-  .lms-hero-ad-label {
-    position: absolute; top: 24px; right: 32px; z-index: 3;
-    font-size: 10px; letter-spacing: .14em; font-weight: 700;
-    color: rgba(255,255,255,.65);
-    padding: 5px 10px; border-radius: 4px;
-    background: rgba(0,0,0,.45); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,.10);
-  }
+  .btn-hero-sec:hover { background: var(--bg-3); border-color: var(--line-2); }
 
-  /* Stats bar bajo el hero */
-  .lms-stats-bar {
-    position: relative; z-index: 5;
-    margin: -60px auto 0; max-width: 1280px; padding: 0 32px;
+  /* Card anuncio derecha · poster grande con imagen real */
+  .lms-hero-poster {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 30px 80px -20px rgba(15,18,32,.35), 0 0 0 1px var(--line);
+    cursor: pointer;
+    transition: transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s;
   }
-  .lms-stats-inner {
-    background: var(--bg-2); border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 20px 28px;
-    display: flex; gap: 36px; flex-wrap: wrap; align-items: center;
-    box-shadow: 0 20px 50px -20px rgba(0,0,0,.25);
+  .lms-hero-poster:hover { transform: translateY(-4px); box-shadow: 0 40px 90px -20px rgba(15,18,32,.45); }
+  .lms-hero-poster::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,.85) 100%);
   }
-  .lms-stat-item { display: flex; flex-direction: column; }
-  .lms-stat-item .val { font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--text); line-height: 1; font-family:'Geist Mono', monospace; }
-  .lms-stat-item .lbl { font-size: 11px; color: var(--text-3); margin-top: 5px; letter-spacing: .08em; }
-  .lms-stat-sep { width: 1px; height: 32px; background: var(--line); }
+  .lms-hero-poster-ad-tag {
+    position: absolute; top: 18px; left: 18px; z-index: 2;
+    font-size: 10px; letter-spacing: .14em; font-weight: 700;
+    color: rgba(255,255,255,.95);
+    padding: 5px 10px; border-radius: 4px;
+    background: rgba(0,0,0,.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.15);
+  }
+  .lms-hero-poster-brand {
+    position: absolute; top: 18px; right: 18px; z-index: 2;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; letter-spacing: .14em; font-weight: 700;
+    color: rgba(255,255,255,.85);
+  }
+  .lms-hero-poster-content {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    padding: 28px;
+    color: #fff;
+  }
+  .lms-hero-poster-eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: .14em; color: rgba(255,255,255,.75); margin-bottom: 8px; font-weight: 600; }
+  .lms-hero-poster-title { font-size: 26px; font-weight: 600; letter-spacing: -.015em; line-height: 1.15; margin-bottom: 10px; }
+  .lms-hero-poster-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: #fff;
+    padding-top: 6px;
+  }
+  .lms-hero-poster-cta svg { transition: transform .2s; }
+  .lms-hero-poster:hover .lms-hero-poster-cta svg { transform: translateX(4px); }
+
+  /* Banda de marcas patrocinadoras */
+  .lms-brands {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .lms-brands-inner {
+    max-width: 1320px; margin: 0 auto; padding: 0 56px;
+    display: flex; align-items: center; gap: 32px;
+  }
+  .lms-brands-label {
+    font-size: 10.5px; letter-spacing: .16em; font-weight: 600;
+    color: var(--text-3); text-transform: uppercase;
+    flex-shrink: 0;
+    border-right: 1px solid var(--line);
+    padding-right: 32px;
+  }
+  .lms-brands-row {
+    display: flex; gap: 36px; align-items: center; flex-wrap: wrap;
+    opacity: .55;
+    filter: grayscale(1);
+    transition: opacity .25s, filter .25s;
+  }
+  .lms-brands-row:hover { opacity: 1; filter: grayscale(0); }
+  .lms-brand {
+    font-family: 'Geist Mono', monospace;
+    font-size: 16px; font-weight: 700; letter-spacing: -.01em;
+    color: var(--text);
+  }
+  .lms-brand small { font-size: 10px; letter-spacing: .14em; color: var(--text-3); display: block; font-weight: 500; }
 
   .lms-section { max-width: 1440px; margin: 0 auto; padding: 48px 56px; }
   .lms-section-h { display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px; padding: 0; }
@@ -755,14 +802,13 @@
   .course-thumb-title { position: absolute; bottom: 10px; left: 14px; right: 14px; z-index: 1; font-size: 14px; font-weight: 600; color: #fff; letter-spacing: -.005em; text-shadow: 0 2px 8px rgba(0,0,0,.6); line-height: 1.25; }
   .course-duration { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,.78); backdrop-filter: blur(6px); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 10.5px; font-family:'Geist Mono', monospace; z-index:2; font-weight: 600; }
   .course-tag { position: absolute; top: 10px; left: 10px; background: var(--brand); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: .08em; z-index:2; box-shadow: 0 4px 10px -2px rgba(0,0,0,.3); }
-  .course-tag.bestseller { background: #e50914; }
+  .course-tag.destacado { background: var(--brand-hi); }
   .course-tag.new { background: var(--pos); }
   .course-body { padding: 14px 16px 16px; }
   .course-instructor { font-size: 11px; color: var(--text-3); font-family:'Geist Mono', monospace; letter-spacing: .08em; margin-bottom: 8px; font-weight: 600; }
-  .course-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--text-3); }
-  .course-rating { display: inline-flex; align-items: center; gap: 5px; font-weight: 500; }
-  .course-rating svg { color: #fbbf24; }
-  .course-price { font-family:'Geist Mono', monospace; font-weight: 700; color: var(--text); font-size: 15px; }
+  .course-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-3); gap: 10px; }
+  .course-lessons { font-weight: 500; }
+  .course-price { font-family:'Geist Mono', monospace; font-weight: 700; color: var(--text); font-size: 15px; white-space: nowrap; }
 
   /* ====== TOAST / CONFETTI / MODAL ====== */
   .toast { position: fixed; bottom: 28px; right: 28px; z-index: 300; padding: 11px 17px; border-radius: 10px; background: var(--pos); color: #fff; font-size: 13px; font-weight: 500; box-shadow: 0 16px 40px -10px rgba(0,168,120,.5); display: flex; align-items:center; gap: 8px; transform: translateY(20px); opacity: 0; transition: transform .25s, opacity .25s; pointer-events: none; }
@@ -1334,46 +1380,58 @@
 
 <!-- ============ VIEW: LMS ============ -->
 <section class="view" id="view-lms">
-  <!-- Hero banner anuncio editable · poster Netflix · NO video -->
+  <!-- Hero split: texto izquierda + poster anuncio derecha -->
   <div class="lms-hero">
-    <div class="lms-hero-ad-label">ANUNCIO DESTACADO · EDITABLE</div>
     <div class="lms-hero-inner">
-      <div class="lms-hero-tag-ad"><span class="dot"></span>PATROCINADO POR 3M ESPE</div>
-      <h1 class="lms-hero-title-big">Implantología avanzada · técnica all-on-4 paso a paso</h1>
-      <p class="lms-hero-subtitle">Curso master de 12 horas con el Dr. Alejandro Moreno. Producción 4K, certificación oficial, acceso vitalicio. Aprende la técnica que cambió la implantología moderna.</p>
-      <div class="lms-hero-meta">
-        <span><b>Dr. Alejandro Moreno</b></span>
-        <span class="sep"></span>
-        <span><b>12h</b> contenido</span>
-        <span class="sep"></span>
-        <span><b>4K</b> producción</span>
-        <span class="sep"></span>
-        <span class="star">★ 4.9 · 1,247 reseñas</span>
+      <div class="lms-hero-left">
+        <div class="lms-hero-tag-ad"><span class="dot"></span>CENIDENT ACADEMIA · CURSOS PREMIUM</div>
+        <h1 class="lms-hero-title-big">Aprende de los mejores <em>odontólogos</em> del mundo</h1>
+        <p class="lms-hero-subtitle">Cursos cinematográficos producidos en 4K con los referentes de Latinoamérica y España. Acceso vitalicio, certificación oficial, contenido actualizado constantemente.</p>
+        <div class="lms-hero-meta">
+          <span><b>347</b> cursos premium</span>
+          <span class="sep"></span>
+          <span><b>89</b> instructores top</span>
+          <span class="sep"></span>
+          <span><b>4K</b> producción</span>
+        </div>
+        <div class="lms-hero-actions">
+          <button class="btn-hero-pri">
+            Ver catálogo completo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn-hero-sec">Para clínicas</button>
+        </div>
       </div>
-      <div class="lms-hero-actions">
-        <button class="btn-hero-pri">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-          Ver tráiler
-        </button>
-        <button class="btn-hero-sec">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Más información
-        </button>
+
+      <!-- Poster anuncio editable a la derecha -->
+      <div class="lms-hero-poster" style="background-image:url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=900&q=85')" onclick="toast('Espacio publicitario · editable')">
+        <div class="lms-hero-poster-ad-tag">ESPACIO PATROCINADO · EDITABLE</div>
+        <div class="lms-hero-poster-brand">3M ESPE</div>
+        <div class="lms-hero-poster-content">
+          <div class="lms-hero-poster-eyebrow">CURSO DESTACADO DE LA SEMANA</div>
+          <div class="lms-hero-poster-title">Implantología avanzada · all-on-4 paso a paso</div>
+          <div class="lms-hero-poster-cta">
+            Ver más
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="lms-stats-bar">
-    <div class="lms-stats-inner">
-      <div class="lms-stat-item"><div class="val">347</div><div class="lbl">CURSOS PREMIUM</div></div>
-      <div class="lms-stat-sep"></div>
-      <div class="lms-stat-item"><div class="val">89</div><div class="lbl">INSTRUCTORES TOP</div></div>
-      <div class="lms-stat-sep"></div>
-      <div class="lms-stat-item"><div class="val">24k</div><div class="lbl">ESTUDIANTES</div></div>
-      <div class="lms-stat-sep"></div>
-      <div class="lms-stat-item"><div class="val">4.9★</div><div class="lbl">RATING PROMEDIO</div></div>
-      <div style="flex:1"></div>
-      <button class="btn-brand">Ver catálogo completo</button>
+  <!-- Banda de marcas patrocinadoras -->
+  <div class="lms-brands">
+    <div class="lms-brands-inner">
+      <div class="lms-brands-label">CON EL RESPALDO DE</div>
+      <div class="lms-brands-row">
+        <div class="lms-brand">3M ESPE</div>
+        <div class="lms-brand">Ivoclar</div>
+        <div class="lms-brand">Straumann</div>
+        <div class="lms-brand">Henry Schein</div>
+        <div class="lms-brand">GC Dental</div>
+        <div class="lms-brand">Dentsply Sirona</div>
+        <div class="lms-brand">Nobel Biocare</div>
+      </div>
     </div>
   </div>
 
@@ -1812,15 +1870,16 @@
 
   // ============ LMS COURSES ============
   // Fotos Unsplash con keywords dentales/médicas/clínicas
+  // Sin ratings ni estrellas: no comparamos doctores entre sí
   const COURSES = [
-    { ttl: 'Endodoncia microscópica · técnicas modernas', ins: 'DRA. SOFIA RAMÍREZ', dur: '8h 42m', rat: '4.9', revs: '892', price: 4500, tag: 'bestseller', tagT: 'BESTSELLER', img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80' },
-    { ttl: 'Carillas de porcelana paso a paso', ins: 'DR. MIGUEL TORRES', dur: '6h 18m', rat: '4.8', revs: '534', price: 3800, tag: 'new', tagT: 'NUEVO', img: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80' },
-    { ttl: 'Ortodoncia invisible · diagnóstico digital', ins: 'DR. PABLO VÁZQUEZ', dur: '12h 04m', rat: '4.9', revs: '1.2k', price: 5500, tag: null, img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80' },
-    { ttl: 'Cirugía de terceros molares con piezoeléctrico', ins: 'DRA. ELENA MARTÍN', dur: '4h 56m', rat: '4.7', revs: '321', price: 3200, tag: null, img: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80' },
-    { ttl: 'Implantología guiada con CBCT', ins: 'DR. ALEJANDRO MORENO', dur: '14h 22m', rat: '4.9', revs: '978', price: 6800, tag: 'bestseller', tagT: 'BESTSELLER', img: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80' },
-    { ttl: 'Periodoncia regenerativa · injertos óseos', ins: 'DR. CARLOS RUIZ', dur: '9h 15m', rat: '4.8', revs: '445', price: 4900, tag: null, img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80' },
-    { ttl: 'Estética digital · diseño de sonrisa en DSD', ins: 'DRA. ANA NÚÑEZ', dur: '5h 38m', rat: '4.9', revs: '672', price: 3500, tag: 'new', tagT: 'NUEVO', img: 'https://images.unsplash.com/photo-1581585099522-f6ac2efe6217?w=600&q=80' },
-    { ttl: 'Gestión de clínica · marketing y retención', ins: 'DR. JAVIER LÓPEZ', dur: '7h 12m', rat: '4.6', revs: '289', price: 2800, tag: null, img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80' },
+    { ttl: 'Endodoncia microscópica · técnicas modernas', ins: 'DRA. SOFIA RAMÍREZ', dur: '8h 42m', lessons: 24, price: 4500, tag: 'destacado', tagT: 'DESTACADO', img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80' },
+    { ttl: 'Carillas de porcelana paso a paso', ins: 'DR. MIGUEL TORRES', dur: '6h 18m', lessons: 18, price: 3800, tag: 'new', tagT: 'NUEVO', img: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80' },
+    { ttl: 'Ortodoncia invisible · diagnóstico digital', ins: 'DR. PABLO VÁZQUEZ', dur: '12h 04m', lessons: 36, price: 5500, tag: null, img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80' },
+    { ttl: 'Cirugía de terceros molares con piezoeléctrico', ins: 'DRA. ELENA MARTÍN', dur: '4h 56m', lessons: 14, price: 3200, tag: null, img: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80' },
+    { ttl: 'Implantología guiada con CBCT', ins: 'DR. ALEJANDRO MORENO', dur: '14h 22m', lessons: 42, price: 6800, tag: 'destacado', tagT: 'DESTACADO', img: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80' },
+    { ttl: 'Periodoncia regenerativa · injertos óseos', ins: 'DR. CARLOS RUIZ', dur: '9h 15m', lessons: 28, price: 4900, tag: null, img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80' },
+    { ttl: 'Estética digital · diseño de sonrisa en DSD', ins: 'DRA. ANA NÚÑEZ', dur: '5h 38m', lessons: 16, price: 3500, tag: 'new', tagT: 'NUEVO', img: 'https://images.unsplash.com/photo-1581585099522-f6ac2efe6217?w=600&q=80' },
+    { ttl: 'Gestión de clínica · marketing y retención', ins: 'DR. JAVIER LÓPEZ', dur: '7h 12m', lessons: 22, price: 2800, tag: null, img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80' },
   ];
   function courseCard(c) {
     return `
@@ -1833,7 +1892,7 @@
         <div class="course-body">
           <div class="course-instructor">${c.ins}</div>
           <div class="course-meta">
-            <span class="course-rating"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${c.rat}<span style="color:var(--text-3)">(${c.revs})</span></span>
+            <span class="course-lessons">${c.lessons} lecciones · ${c.dur}</span>
             <span class="course-price">${COUNTRIES[CURRENT].symbol}${c.price.toLocaleString('es-MX')}</span>
           </div>
         </div>

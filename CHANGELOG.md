@@ -4,6 +4,27 @@ Cada entrada describe qué cambió, por qué, y la fecha. Lo más reciente arrib
 
 ---
 
+## v1.3 · 2026-05-21
+
+**Hero LMS rediseñado completo + sin ratings + banda de marcas.**
+
+### Quitado
+- **Ratings y estrellitas de los cursos**: comparar doctores entre sí por estrellas perjudica al que ranquea bajo, y eso no es justo. Reemplazado por "24 lecciones · 8h 42m" (información útil, no comparativa)
+- **Bestseller rojo Netflix**: cambiado a "DESTACADO" en azul brand. Más neutral, no jerarquiza doctores
+- Estrellitas del hero stats bar (era "4.9★ RATING PROMEDIO" → ahora "4K PRODUCCIÓN")
+
+### Hero LMS · split nuevo
+- **Izquierda**: texto premium grande (52px) "Aprende de los mejores odontólogos del mundo", subtítulo, meta en una línea, 2 CTAs grandes ("Ver catálogo completo" gradient azul + "Para clínicas" outlined)
+- **Derecha**: poster de anuncio editable real (4:3), con imagen de fondo, etiqueta "ESPACIO PATROCINADO · EDITABLE" arriba izquierda, marca del patrocinador (ej. 3M ESPE) arriba derecha, título overlay grande abajo con CTA. Click → toast "Espacio publicitario editable". Hover → lift + shadow
+- Quitado el background-image full-bleed del hero (cubría todo y se veía pesado). Ahora hero es claro con gradient sutil radial brand+purple y el poster con la foto va a la derecha
+
+### Banda de marcas patrocinadoras (nuevo)
+- Entre el hero y los carruseles, una banda con label "CON EL RESPALDO DE" + 7 marcas dentales (3M ESPE, Ivoclar, Straumann, Henry Schein, GC Dental, Dentsply Sirona, Nobel Biocare)
+- Estilo grayscale por defecto, color al hover (efecto Apple/Vercel)
+- Llena el espacio vacío entre hero y cursos
+
+---
+
 ## v1.2 · 2026-05-21
 
 **Rediseño Academia + Home estilo Netflix premium.**
